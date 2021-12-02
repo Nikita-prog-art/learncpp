@@ -15,6 +15,6 @@ int main(){
         mass[i + 1] = buff;
     }
     for (int i = 0; i < n; i++){
-        cout << mass[i];
+        cout << mass[i] << " ";
     }
 }
