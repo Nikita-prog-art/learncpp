@@ -4,13 +4,15 @@
 using namespace std;
 
 int main(){
-    int n, r;
-    cin >> n >> r;
-    vector <int> prets(n);
-    for(int i = 0; i < n; i++)
-        prets[i] = i + 1;
-    for(int i = r - 1; prets.size() > 2; i = (i - 1 + r) % prets.size())
-        prets.erase(prets.begin() + i);
-    for (auto x : prets)
+    int n;
+    cin >> n;
+    vector <int> mass(n);
+    for (int i = 0; i < n; i++)
+        cin >> mass[i];
+    vector <int> unsMass;
+    for (int i = 0; i < n; i++)
+        if (mass[i] >= 0)
+            unsMass.push_back(mass[i]);
+    for (auto x : unsMass)
         cout << x << " ";
 }
