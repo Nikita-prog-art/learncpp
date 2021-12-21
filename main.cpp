@@ -10,10 +10,10 @@ int main() {
         cin >> mass[i];
     int i = 1;
     while(i < n) {
-        if(mass[i - 1] > mass[i]) {
+        if(mass[i] > mass[i - 1]) {
             int x = mass[i];
             int j = i - 1;
-            while(j >= 0 && mass[j] > x) {
+            while(j >= 0 && mass[j] < x) {
                 mass[j + 1] = mass[j];
                 j--;
             }
