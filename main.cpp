@@ -1,25 +1,27 @@
 #include <iostream>
 #include <vector>
-
 using namespace std;
 
-int main(){
+int main() {
     int n;
     cin >> n;
     vector <int> mass(n);
-    for (int i = 0; i < n; i++)
+    for(int i = 0; i < n; i++)
         cin >> mass[i];
-    long long cnt = 0;
-    for (int i = 0; i < n - 1; i++){
-        bool sd = true; //обмена нет
-        for (int j = 0; j < n - 1 - i; j++)
-            if (mass[j] > mass[j + 1]){
-                swap(mass[j], mass[j + 1]);
-                sd = false; //обмен есть!
-                cnt++;
+    int i = 1;
+    while(i < n) {
+        if(mass[i - 1] > mass[i]) {
+            int x = mass[i];
+            int j = i - 1;
+            while(j >= 0 && mass[j] > x) {
+                mass[j + 1] = mass[j];
+                j--;
             }
-        if (sd)
-            break;
+            mass[j + 1] = x;
+        }
+        i++;
     }
-    cout << cnt;
+    for(auto x : mass)
+        cout << x << " ";
+    return 0;
 }
