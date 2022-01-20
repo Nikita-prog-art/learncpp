@@ -4,30 +4,16 @@ using namespace std;
 
 int main() {
     int n;
+    vector<int> mass(20001, 0);
     cin >> n;
-    vector <int> mass(n);
-    vector <int> imass(n);
-    for(int i = 0; i < n; i++)
-        cin >> mass[i];
-    for (int i = 0; i < n; i++)
-        imass[i] = i + 1;
-    int i = 1;
-    while(i < n) {
-        if(mass[i] > mass[i - 1]) {
-            int x = mass[i];
-            int ix = imass[i];
-            int j = i - 1;
-            while(j >= 0 && mass[j] < x) {
-                mass[j + 1] = mass[j];
-                imass[j + 1] = imass[j];
-                j--;
-            }
-            mass[j + 1] = x;
-            imass[j + 1] = ix;
-        }
-        i++;
+    for (int i = 0; i < n; i++) {
+        int buff;
+        cin >> buff;
+        mass[buff + 10000]++;
     }
-    for(auto x : imass)
-        cout << x << " ";
-    return 0;
+    for (int i = 0; i < 20001; i++)
+        while (mass[i] != 0) {
+            cout << i - 10000 << " ";
+            mass[i]--;
+        }
 }
